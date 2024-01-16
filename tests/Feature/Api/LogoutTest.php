@@ -14,7 +14,7 @@ class LogoutTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function logout_user(): void
+    public function test_logout_user(): void
     {
         $user = User::create([
             'name' => 'Ali',
@@ -22,7 +22,7 @@ class LogoutTest extends TestCase
             'password' => bcrypt('password'),
         ]);
 
-        $token = $user->createToken('Android')->plainTextToken;
+        $token = $user->createToken("Ali's Android")->plainTextToken;
 
         $response = $this->post('/api/logout', headers: [
             'Authorization' => "Bearer $token"

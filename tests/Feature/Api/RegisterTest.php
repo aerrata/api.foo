@@ -13,14 +13,14 @@ class RegisterTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function register_new_user(): void
+    public function test_register_new_user(): void
     {
         $response = $this->post('/api/register', [
             'name' => 'Ali',
             'email' => 'ali@domain.com',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'device_name' => 'Android'
+            'device_name' => "Ali's Android"
         ]);
 
         $response->assertSuccessful();
@@ -29,6 +29,6 @@ class RegisterTest extends TestCase
 
         $this->assertDatabaseHas('users', ['email' => 'ali@domain.com']);
 
-        $this->assertDatabaseHas('personal_access_tokens', ['name' => 'Android']);
+        $this->assertDatabaseHas('personal_access_tokens', ['name' => "Ali's Android"]);
     }
 }
